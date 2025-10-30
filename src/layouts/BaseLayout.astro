@@ -1,0 +1,61 @@
+---
+import "../styles/global.css";
+const { title = "CABEN", description = "Servicios profesionales" } = Astro.props;
+---
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1e3a" />
+    <link rel="icon" href="/images/logo.png" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/40 backdrop-blur">
+      <div class="mx-auto max-w-6xl px-4">
+        <!-- Logo centrado arriba -->
+        <div class="flex justify-center py-8">
+          <a href="/" class="flex items-center">
+            <img src="/images/logo.png" alt="CABEN" class="h-32 w-32 rounded-2xl object-contain" />
+          </a>
+        </div>
+        
+        <!-- Menú de navegación abajo -->
+        <div class="flex items-center justify-center pb-4">
+          <ul class="hidden md:flex gap-8">
+            <li><a class="text-white/80 hover:text-white transition-colors duration-200 font-medium" href="/">Inicio</a></li>
+            <li><a class="text-white/80 hover:text-white transition-colors duration-200 font-medium" href="/servicios">Servicios</a></li>
+            <li><a class="text-white/80 hover:text-white transition-colors duration-200 font-medium" href="/acerca">Acerca</a></li>
+            <li><a class="text-white/80 hover:text-white transition-colors duration-200 font-medium" href="/contacto">Contacto</a></li>
+          </ul>
+          
+          <!-- Menú móvil -->
+          <details class="md:hidden">
+            <summary class="cursor-pointer rounded-lg px-3 py-2 text-white/90 hover:bg-white/10 font-medium">Menú</summary>
+            <div class="absolute right-4 mt-2 w-44 rounded-xl border border-white/10 bg-black/70 p-2 shadow-lg">
+              <a class="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/10" href="/">Inicio</a>
+              <a class="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/10" href="/servicios">Servicios</a>
+              <a class="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/10" href="/acerca">Acerca</a>
+              <a class="block rounded-lg px-3 py-2 text-white/90 hover:bg-white/10" href="/contacto">Contacto</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-with-footer pt-44">
+      <slot />
+    </main>
+
+    <footer class="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-black/40 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-sm text-white/70">
+        <p>© {new Date().getFullYear()} CABEN. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4">
+          <a href="/contacto" class="hover:text-white">Contacto</a>
+          <a href="/acerca" class="hover:text-white">Acerca</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

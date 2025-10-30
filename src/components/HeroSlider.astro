@@ -1,0 +1,180 @@
+---
+/**
+ * Hero slider sin librerías
+ * Props:
+ *  - images: Array<{ src: string; alt?: string; caption?: string }>
+ *  - height?: string (clase Tailwind de alto, ej: "h-[520px]")
+ *  - interval?: number (ms) 4000 por defecto
+ */
+
+type Slide = { src: string; alt?: string; caption?: string };
+
+const {
+  images = [],
+  height = "h-[520px]",
+  interval = 4000
+} = Astro.props as {
+  images?: Slide[];
+  height?: string;
+  interval?: number;
+};
+
+const slidesData: Slide[] = (images ?? []) as Slide[];
+---
+<section class="relative isolate">
+  <!-- Carrusel -->
+  <div
+    class={`relative ${height} overflow-hidden rounded-none`}
+    id="hero-slider"
+    aria-roledescription="carousel"
+    data-interval={interval}
+  >
+    <!-- Slides -->
+    <div class="slides relative h-full w-full">
+      {slidesData.map((img: Slide, i: number) => (
+        <figure
+          class={`slide absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === 0 ? "opacity-100" : "opacity-0"}`}
+          aria-hidden={i === 0 ? "false" : "true"}
+        >
+          <img
+            src={img.src}
+            alt={img.alt ?? `slide-${i + 1}`}
+            class="h-full w-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+        </figure>
+      ))}
+    </div>
+
+    <!-- Controles con efectos liquid glass -->
+    <button class="nav prev absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl border border-white/30 text-white hover:from-white/30 hover:to-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20 flex items-center justify-center group ripple-effect" aria-label="Anterior">
+      <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <button class="nav next absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl border border-white/30 text-white hover:from-white/30 hover:to-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20 flex items-center justify-center group ripple-effect" aria-label="Siguiente">
+      <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+
+    <!-- Dots con efectos liquid glass -->
+    <div class="dots absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 p-3 rounded-2xl bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
+      {slidesData.map((_, i: number) => (
+        <button
+          class={`dot w-4 h-4 rounded-full transition-all duration-300 hover:scale-125 ${i === 0 ? "bg-white shadow-lg shadow-white/50 scale-125" : "bg-white/50 hover:bg-white/80"}`}
+          aria-label={`Ir al slide ${i + 1}`}
+          data-index={i}
+        />
+      ))}
+    </div>
+
+    <!-- Overlay sutil con gradiente para mejor legibilidad -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+  </div>
+</section>
+
+<!-- JS puro para evitar errores de TS -->
+<script is:inline>
+  const root = document.querySelector("#hero-slider");
+  if (!root) {
+    console.warn("HeroSlider: no se encontró root");
+  } else {
+    const slides = Array.from(root.querySelectorAll(".slide"));
+    const dots = Array.from(root.querySelectorAll(".dot"));
+    const btnPrev = root.querySelector(".prev");
+    const btnNext = root.querySelector(".next");
+
+    let idx = 0;
+    const DURATION = Number(root.dataset.interval) || 4000;
+    let timer = null;
+
+    const set = (n) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle("opacity-100", i === idx);
+        s.classList.toggle("opacity-0", i !== idx);
+      });
+      dots.forEach((d, i) => {
+        if (i === idx) {
+          d.classList.add("bg-white", "scale-125", "shadow-lg", "shadow-white/50");
+          d.classList.remove("bg-white/50");
+        } else {
+          d.classList.remove("bg-white", "scale-125", "shadow-lg", "shadow-white/50");
+          d.classList.add("bg-white/50");
+        }
+      });
+    };
+
+    const next = () => set(idx + 1);
+    const prev = () => set(idx - 1);
+
+    const play = () => { timer = setInterval(next, DURATION); };
+    const stop = () => { if (timer) clearInterval(timer); };
+
+    btnNext?.addEventListener("click", () => { stop(); next(); play(); });
+    btnPrev?.addEventListener("click", () => { stop(); prev(); play(); });
+
+    dots.forEach((d) => {
+      d.addEventListener("click", () => {
+        const i = Number(d.dataset.index ?? "0");
+        stop(); set(i); play();
+      });
+    });
+
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", play);
+
+    // Efecto ripple para botones de navegación
+    const addRippleEffect = (button) => {
+      button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    };
+
+    // Aplicar efecto ripple a botones de navegación
+    if (btnNext) addRippleEffect(btnNext);
+    if (btnPrev) addRippleEffect(btnPrev);
+
+    play();
+  }
+</script>
+
+<!-- Estilos CSS para efectos ripple -->
+<style>
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+  }
+  
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+</style>

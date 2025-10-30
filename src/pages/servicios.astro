@@ -1,0 +1,366 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const servicios = [
+  {
+    key: "transporte",
+    img: "/images/servicio1.jpg",
+    titulo: "Transporte de pasajeros",
+    desc: "Ofrecemos transporte seguro y eficiente en diferentes rutas marítimas.",
+    detalle: {
+      hero: "/images/servicio1.jpg",
+      intro:
+        "Traslados confiables para personal y visitantes en rutas marítimas locales y regionales.",
+      bullets: [
+        "Patrones con experiencia en navegación en el sur austral.",
+        "Cumplimiento estricto de normas de seguridad.",
+        "Horarios flexibles y coordinación directa.",
+      ],
+      whatsapp:
+        "https://wa.me/56912345678?text=Hola%20CABEN,%20quisiera%20cotizar%20Transporte%20de%20Pasajeros",
+    },
+  },
+  {
+    key: "subarriendo",
+    img: "/images/servicio2.jpg",
+    titulo: "Subarriendo de embarcaciones",
+    desc: "Disponemos de embarcaciones modernas y versátiles para arriendo.",
+    detalle: {
+      hero: "/images/servicio2.jpg",
+      intro:
+        "Embarcaciones equipadas para faenas y logística costera, listas para operar.",
+      bullets: [
+        "Documentación y certificaciones al día.",
+        "Opciones con tripulación o solo embarcación.",
+        "Mantención preventiva permanente.",
+      ],
+      whatsapp:
+        "https://wa.me/56912345678?text=Hola%20CABEN,%20quisiera%20cotizar%20Subarriendo%20de%20Embarcaciones",
+    },
+  },
+  {
+    key: "consultoria",
+    img: "/images/servicio3.jpg",
+    titulo: "Consultoría",
+    desc: "Asesoramiento técnico y estratégico para operaciones marítimas eficientes.",
+    detalle: {
+      hero: "/images/servicio3.jpg",
+      intro:
+        "Acompañamiento experto para optimizar rutas, costos y cumplimiento normativo.",
+      bullets: [
+        "Diagnóstico operativo y recomendaciones prácticas.",
+        "Gestión de riesgos y protocolos de seguridad.",
+        "Apoyo en tramitación y regulación marítima.",
+      ],
+      whatsapp:
+        "https://wa.me/56912345678?text=Hola%20CABEN,%20quisiera%20cotizar%20Consultor%C3%ADa%20Mar%C3%ADtima",
+    },
+  },
+];
+---
+<BaseLayout title="CABEN — Servicios" description="Transporte marítimo, subarriendo de embarcaciones y consultoría.">
+  <!-- HERO MEJORADO -->
+  <header class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <img
+        src="/images/background.jpg"
+        alt="Costa de Guaitecas"
+        class="h-[500px] w-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-blue-900/40 via-blue-800/60 to-blue-900/80"></div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-4 pt-32 pb-20">
+      <div class="text-center">
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
+          Nuestros <span class="text-blue-300">Servicios</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+          Soluciones marítimas integrales para todas tus necesidades en las aguas del sur de Chile
+        </p>
+        
+        <!-- Estadísticas rápidas con liquid glass -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
+          <div class="liquid-glass-blue liquid-ripple floating-animation p-6 text-center rounded-2xl">
+            <div class="text-3xl font-bold text-blue-300 mb-2">15+</div>
+            <div class="text-white/80">Años de Experiencia</div>
+          </div>
+          <div class="liquid-glass-blue liquid-ripple floating-animation p-6 text-center rounded-2xl" style="animation-delay: -2s;">
+            <div class="text-3xl font-bold text-blue-300 mb-2">24/7</div>
+            <div class="text-white/80">Disponibilidad</div>
+          </div>
+          <div class="liquid-glass-blue liquid-ripple floating-animation p-6 text-center rounded-2xl" style="animation-delay: -4s;">
+            <div class="text-3xl font-bold text-blue-300 mb-2">100%</div>
+            <div class="text-white/80">Seguridad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TARJETAS DE SERVICIOS MEJORADAS -->
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Servicios <span class="text-blue-400">Especializados</span>
+      </h2>
+      <p class="text-xl text-white/80 max-w-3xl mx-auto">
+        Cada servicio diseñado para satisfacer las demandas específicas de la industria marítima
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {servicios.map((s, index) => (
+        <article class="liquid-glass liquid-ripple group overflow-hidden hover:scale-105 transition-all duration-500 rounded-3xl floating-animation" style={`animation-delay: ${index * -1.5}s;`}>
+          <div class="relative h-64 w-full overflow-hidden">
+            <img src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="liquid-glass-blue px-4 py-2 rounded-full text-sm font-bold text-white">
+                0{index + 1}
+              </span>
+            </div>
+          </div>
+
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-4">{s.titulo}</h3>
+            <p class="text-white/80 mb-6 leading-relaxed">{s.desc}</p>
+            
+            <!-- Beneficios clave con liquid glass -->
+            <ul class="space-y-3 mb-8">
+              {s.detalle.bullets.slice(0, 2).map((bullet) => (
+                <li class="flex items-center text-white/70 text-sm liquid-glass-green rounded-lg p-2">
+                  <svg class="w-4 h-4 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+
+            <button
+              class="w-full liquid-glass-blue hover:scale-105 text-white px-6 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl liquid-ripple"
+              data-open={s.key}
+              aria-haspopup="dialog"
+              aria-controls={`modal-${s.key}`}
+            >
+              Ver Detalles Completos
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- CLIENTES CON LIQUID GLASS -->
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <div class="liquid-glass p-12 text-center rounded-3xl floating-animation">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Confían en <span class="text-blue-400">Nosotros</span>
+      </h2>
+      <p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+        Empresas líderes que han elegido nuestros servicios marítimos profesionales
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="liquid-glass-blue liquid-ripple p-8 rounded-2xl hover:scale-105 transition-all duration-500 floating-animation" style="animation-delay: -1s;">
+          <img src="/images/clientes/planctonandino.svg" alt="Plancton Andino" class="h-16 w-auto mx-auto mb-4 invert" />
+          <h3 class="text-lg font-semibold text-white mb-2">Plancton Andino</h3>
+          <p class="text-white/70 text-sm">Servicios especializados en acuicultura</p>
+        </div>
+        
+        <div class="liquid-glass-blue liquid-ripple p-8 rounded-2xl hover:scale-105 transition-all duration-500 floating-animation" style="animation-delay: -3s;">
+          <img src="/images/clientes/salmonesaustral.png" alt="Salmones Austral" class="h-16 w-auto mx-auto mb-4 invert" />
+          <h3 class="text-lg font-semibold text-white mb-2">Salmones Austral</h3>
+          <p class="text-white/70 text-sm">Transporte y logística marina</p>
+        </div>
+      </div>
+      
+      <!-- Call to action con liquid glass -->
+      <div class="mt-12">
+        <p class="text-white/80 mb-6">¿Quieres unirte a nuestros clientes satisfechos?</p>
+        <a href="/contacto" class="liquid-glass-green liquid-ripple text-lg px-10 py-4 inline-flex items-center gap-2 rounded-2xl font-semibold text-white hover:scale-105 transition-all duration-300 shadow-xl">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+          </svg>
+          Solicitar Cotización
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALES CON LIQUID GLASS -->
+  {servicios.map((s) => (
+    <dialog id={`modal-${s.key}`} class="liquid-glass max-w-3xl w-full mx-4 rounded-3xl border border-white/30 text-white">
+      <div class="relative overflow-hidden rounded-t-3xl">
+        <img src={s.detalle.hero} alt={s.titulo} class="h-64 w-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <button
+          class="liquid-glass-blue absolute right-4 top-4 rounded-full backdrop-blur p-3 text-white hover:scale-110 transition-all duration-300 liquid-ripple"
+          data-close
+          aria-label="Cerrar"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="absolute bottom-4 left-4">
+          <h3 class="text-3xl font-bold text-white">{s.titulo}</h3>
+        </div>
+      </div>
+
+      <div class="p-8">
+        <p class="text-xl text-white/90 mb-8 leading-relaxed">{s.detalle.intro}</p>
+        
+        <div class="mb-8">
+          <h4 class="text-lg font-semibold text-white mb-4">Características del servicio:</h4>
+          <ul class="grid gap-4 md:grid-cols-2">
+            {s.detalle.bullets.map((b) => (
+              <li class="liquid-glass-green flex items-start gap-3 text-white/80 p-3 rounded-xl">
+                <svg class="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a
+            href={s.detalle.whatsapp}
+            target="_blank"
+            rel="noopener"
+            class="liquid-glass-green liquid-ripple flex-1 inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+            Consultar por WhatsApp
+          </a>
+          <a
+            href={`/contacto?servicio=${s.key}`}
+            class="liquid-glass liquid-ripple flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/30 px-6 py-4 font-semibold text-white transition-all duration-300 hover:scale-105"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Enviar Formulario
+          </a>
+        </div>
+      </div>
+    </dialog>
+  ))}
+
+  <!-- Script mínimo para abrir/cerrar -->
+  <script>
+    const modals = new Map();
+    document.querySelectorAll("dialog[id^='modal-']").forEach(d => {
+      modals.set(d.id.replace("modal-", ""), d);
+      // cerrar al clickear backdrop
+      d.addEventListener("click", (e) => { if (e.target === d) (d as HTMLDialogElement).close(); });
+    });
+
+    // abrir
+    document.querySelectorAll("[data-open]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-open");
+        const dlg = modals.get(key);
+        if (dlg) dlg.showModal();
+      });
+    });
+
+    // cerrar
+    document.querySelectorAll("[data-close]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const dlg = btn.closest("dialog");
+        if (dlg) dlg.close();
+      });
+    });
+  </script>
+
+  <style>
+    /* Liquid Glass Effects */
+    .liquid-glass {
+      background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+      );
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .liquid-glass-blue {
+      background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.15),
+        rgba(37, 99, 235, 0.08),
+        rgba(147, 197, 253, 0.12)
+      );
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      box-shadow: 
+        0 12px 40px rgba(59, 130, 246, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(59, 130, 246, 0.2);
+    }
+
+    .liquid-glass-green {
+      background: linear-gradient(135deg, 
+        rgba(34, 197, 94, 0.12),
+        rgba(22, 163, 74, 0.06),
+        rgba(134, 239, 172, 0.1)
+      );
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      box-shadow: 
+        0 10px 35px rgba(34, 197, 94, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    .liquid-ripple {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .liquid-ripple::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent
+      );
+      transition: left 0.8s ease;
+    }
+
+    .liquid-ripple:hover::before {
+      left: 100%;
+    }
+
+    .floating-animation {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-10px) rotate(1deg); }
+      66% { transform: translateY(5px) rotate(-1deg); }
+    }
+
+    /* Modal backdrop liquid effect */
+    dialog::backdrop { 
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</BaseLayout>

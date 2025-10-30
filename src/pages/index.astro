@@ -1,0 +1,312 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSlider from "../components/HeroSlider.astro";
+
+const heroImages = [
+  { src: "/images/ini2.jpg", caption: "Servicios Marítimos René Armando Oyarce Cárcamo EIRL" },
+  { src: "/images/ini3.jpg", caption: "Transporte de personal y operaciones acuícolas" },
+  { src: "/images/ini4.jpg", caption: "Experiencia local en el sur de Chile" },
+];
+
+const servicios = [
+  {
+    img: "/images/servicio1.jpg",
+    titulo: "Transporte de Pasajeros",
+    desc: "Traslados seguros y puntuales en rutas marítimas locales y regionales del sur de Chile.",
+    icon: "🚢",
+    features: ["Rutas regulares", "Personal capacitado", "Embarcaciones modernas"],
+    href: "/servicios#transporte",
+  },
+  {
+    img: "/images/servicio2.jpg",
+    titulo: "Subarriendo de Embarcaciones",
+    desc: "Embarcaciones equipadas y con mantención al día para faenas y logística costera.",
+    icon: "⚓",
+    features: ["Flota moderna", "Mantención incluida", "Contratos flexibles"],
+    href: "/servicios#subarriendo",
+  },
+  {
+    img: "/images/servicio3.jpg",
+    titulo: "Consultoría Marítima",
+    desc: "Optimización de operaciones, cumplimiento normativo y gestión de riesgos marítimos.",
+    icon: "💼",
+    features: ["Análisis técnico", "Cumplimiento normativo", "Gestión de riesgos"],
+    href: "/servicios#consultoria",
+  },
+];
+
+const destacados = [
+  {
+    img: "/images/item1.jpg",
+    titulo: "Protagonistas del Mar",
+    texto: "Impulsamos nuestra compañía mediante el desarrollo de competencias y habilidades de nuestro equipo marítimo."
+  },
+  {
+    img: "/images/item2.jpg",
+    titulo: "Calidad al Cliente", 
+    texto: "Buscamos satisfacer las necesidades de nuestros clientes con servicios innovadores y personalizados."
+  },
+  {
+    img: "/images/item3.jpg",
+    titulo: "Nuestro Entorno",
+    texto: "Nuestra gente, el mar, lagos y ríos son parte de lo más importante para nosotros y nuestra operación."
+  },
+];
+
+const estadisticas = [
+  { numero: "15+", label: "Años de Experiencia", descripcion: "En operaciones marítimas" },
+  { numero: "500+", label: "Clientes Atendidos", descripcion: "Empresas y particulares" },
+  { numero: "24/7", label: "Disponibilidad", descripcion: "Atención continua" },
+  { numero: "100%", label: "Seguridad", descripcion: "Compromiso total" },
+];
+
+const testimonios = [
+  {
+    texto: "CABEN ha sido nuestro socio estratégico en transporte marítimo. Su profesionalismo y puntualidad son excepcionales.",
+    nombre: "María González",
+    cargo: "Gerente de Operaciones",
+    empresa: "AquaChile",
+    rating: 5
+  },
+  {
+    texto: "La calidad del servicio y la atención al detalle que ofrece el equipo de CABEN superó nuestras expectativas.",
+    nombre: "Carlos Mendoza",
+    cargo: "Coordinador Logístico",
+    empresa: "Salmones Austral",
+    rating: 5
+  }
+];
+---
+<BaseLayout title="CABEN — Servicios Marítimos" description="Transporte marítimo, subarriendo de embarcaciones y consultoría en el sur de Chile. Experiencia, seguridad y calidad.">
+  <!-- HERO SLIDER SIMPLE -->
+  <section class="relative overflow-hidden">
+    <HeroSlider images={heroImages} height="h-[70vh] min-h-[600px]" interval={6000} />
+  </section>
+
+  <!-- INFORMACIÓN PRINCIPAL -->
+  <section class="bg-gradient-to-b from-blue-50 to-blue-100 py-16">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
+          Servicios Marítimos <span class="text-blue-600">Profesionales</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+          Transporte de personal y operaciones acuícolas en las aguas del sur de Chile
+        </p>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          <strong>René Armando Oyarce Cárcamo EIRL</strong> - Con más de 15 años de experiencia navegando por las aguas patagónicas, ofrecemos servicios marítimos confiables y seguros para empresas y particulares.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTADÍSTICAS -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Líderes en Servicios Marítimos</h2>
+      <p class="text-white/80 text-lg max-w-3xl mx-auto">
+        Números que reflejan nuestro compromiso con la excelencia y la confianza de nuestros clientes.
+      </p>
+    </div>
+    
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {estadisticas.map((stat, index) => (
+        <article class="glass-card p-6 text-center group hover:scale-105 transition-all duration-300">
+          <div class="text-4xl md:text-5xl font-bold text-blue-300 mb-2 group-hover:animate-pulse">
+            {stat.numero}
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-2">{stat.label}</h3>
+          <p class="text-white/70 text-sm">{stat.descripcion}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- TARJETAS DESTACADAS MEJORADAS -->
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Por Qué Elegirnos?</h2>
+      <p class="text-white/80 text-lg max-w-3xl mx-auto">
+        Descubre los valores y principios que nos convierten en el socio ideal para tus operaciones marítimas.
+      </p>
+    </div>
+    
+    <div class="grid gap-8 md:grid-cols-3">
+      {destacados.map((d, index) => (
+        <article class="glass-card group overflow-hidden hover:scale-105 transition-all duration-300">
+          <div class="relative h-64 w-full overflow-hidden">
+            <img src={d.img} alt={d.titulo} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-white mb-4">{d.titulo}</h3>
+            <p class="text-white/80 leading-relaxed text-lg">{d.texto}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- SERVICIOS PRINCIPALES MEJORADOS -->
+  <section class="mx-auto max-w-6xl px-4 pb-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Nuestros Servicios</h2>
+      <p class="text-white/80 text-lg max-w-3xl mx-auto">
+        Soluciones integrales para todas tus necesidades marítimas en la Patagonia chilena.
+      </p>
+    </div>
+    
+    <div class="grid gap-8 lg:grid-cols-3">
+      {servicios.map((s, index) => (
+        <article class="glass-card group overflow-hidden hover:scale-105 transition-all duration-300">
+          <div class="relative h-48 w-full overflow-hidden">
+            <img src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="text-3xl">{s.icon}</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-3">{s.titulo}</h3>
+            <p class="text-white/80 mb-4 leading-relaxed">{s.desc}</p>
+            
+            <!-- Lista de características -->
+            <ul class="space-y-2 mb-6">
+              {s.features.map((feature) => (
+                <li class="flex items-center text-white/70 text-sm">
+                  <svg class="w-4 h-4 text-green-400 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            
+            <a href={s.href} class="btn-primary w-full text-center block">
+              Conoce Más
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+    <!-- LLAMADA A LA ACCIÓN FINAL -->
+  <section class="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          ¿Listo para <span class="text-blue-300">Zarpar</span>?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+          Únete a cientos de empresas que confían en nuestros servicios marítimos profesionales
+        </p>
+        
+        <!-- Beneficios destacados -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="glass-card p-6 bg-white/10 backdrop-blur">
+            <div class="text-blue-300 text-2xl mb-2">⚓</div>
+            <h3 class="text-white font-semibold mb-2">Experiencia Comprobada</h3>
+            <p class="text-blue-100 text-sm">Más de 15 años navegando por las aguas del sur de Chile</p>
+          </div>
+          <div class="glass-card p-6 bg-white/10 backdrop-blur">
+            <div class="text-blue-300 text-2xl mb-2">🚢</div>
+            <h3 class="text-white font-semibold mb-2">Flota Moderna</h3>
+            <p class="text-blue-100 text-sm">Embarcaciones equipadas con la última tecnología</p>
+          </div>
+          <div class="glass-card p-6 bg-white/10 backdrop-blur">
+            <div class="text-blue-300 text-2xl mb-2">🎯</div>
+            <h3 class="text-white font-semibold mb-2">Resultados Garantizados</h3>
+            <p class="text-blue-100 text-sm">Cumplimiento del 100% en nuestros proyectos</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="btn-primary text-lg px-10 py-4 text-white hover:bg-blue-500 transition-all duration-300 shadow-xl">
+            <svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Solicitar Cotización
+          </a>
+          <a href="/servicios" class="btn-secondary text-lg px-10 py-4 text-white border-white hover:bg-white hover:text-blue-900 transition-all duration-300 shadow-xl">
+            <svg class="w-6 h-6 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+            </svg>
+            Más Información
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LLAMADA A LA ACCIÓN MEJORADA -->
+  <section class="mx-auto max-w-5xl px-4 py-24">
+    <div class="glass-card p-12 md:p-20 text-center relative overflow-hidden mx-auto">
+      <!-- Efecto de fondo -->
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-green-600/20"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <h3 class="text-3xl md:text-5xl font-bold text-white mb-8">
+          ¿Listo para Zarpar con Nosotros?
+        </h3>
+        <p class="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Contáctanos hoy mismo y descubre cómo podemos hacer que tu proyecto marítimo navegue hacia el éxito. 
+          Respuesta rápida y atención personalizada garantizada.
+        </p>
+        
+        <!-- Características destacadas -->
+        <div class="grid gap-8 md:grid-cols-3 mb-12 max-w-3xl mx-auto">
+          <div class="flex items-center justify-center gap-3 text-white/80">
+            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-base font-medium">Respuesta en 24h</span>
+          </div>
+          <div class="flex items-center justify-center gap-3 text-white/80">
+            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-base font-medium">Cotización gratuita</span>
+          </div>
+          <div class="flex items-center justify-center gap-3 text-white/80">
+            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-base font-medium">Atención personalizada</span>
+          </div>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" class="btn-primary text-lg px-8 py-4 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Contactar Ahora
+          </a>
+          <a href="/servicios" class="btn-secondary text-lg px-8 py-4 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+            Ver Todos los Servicios
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animaciones CSS -->
+  <style>
+    @keyframes shine {
+      0% { text-shadow: 0 0 0 rgba(255,255,255,0); }
+      50% { text-shadow: 0 0 32px rgba(255,255,255,0.35); }
+      100% { text-shadow: 0 0 0 rgba(255,255,255,0); }
+    }
+    
+    .animate-shine {
+      animation: shine 3s ease-in-out infinite;
+    }
+  </style>
+</BaseLayout>

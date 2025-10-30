@@ -1,0 +1,214 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const valores = [
+  { 
+    icon: "🧭", 
+    titulo: "Integridad", 
+    texto: "Actuamos con transparencia y honestidad en todas nuestras operaciones, manteniendo los más altos estándares éticos." 
+  },
+  { 
+    icon: "⚓", 
+    titulo: "Compromiso de Servicio", 
+    texto: "Nos dedicamos a superar las expectativas de nuestros clientes, brindando un servicio excepcional y personalizado." 
+  },
+  { 
+    icon: "🤝", 
+    titulo: "Respeto", 
+    texto: "Valoramos a cada persona y el medio ambiente, construyendo relaciones basadas en la confianza mutua." 
+  },
+  { 
+    icon: "🏆", 
+    titulo: "Excelencia", 
+    texto: "Nos esforzamos continuamente por mejorar, innovar y ofrecer la más alta calidad en todos nuestros servicios." 
+  },
+];
+
+const estadisticas = [
+  { numero: "15+", label: "Años de Experiencia", descripcion: "Navegando las aguas del sur de Chile" },
+  { numero: "500+", label: "Clientes Satisfechos", descripcion: "Empresas que confían en nuestros servicios" },
+  { numero: "24/7", label: "Disponibilidad", descripcion: "Atención y respuesta inmediata" },
+  { numero: "100%", label: "Compromiso", descripcion: "Con la seguridad y calidad" },
+];
+
+const equipo = [
+  {
+    nombre: "René Armando Oyarce Cárcamo",
+    cargo: "Fundador y Director General",
+    descripcion: "Con más de 20 años de experiencia en operaciones marítimas en la Patagonia chilena.",
+    imagen: "/images/item1.jpg"
+  },
+  {
+    nombre: "Equipo de Capitanes",
+    cargo: "Patrones Experimentados",
+    descripcion: "Profesionales certificados con amplio conocimiento de las aguas locales.",
+    imagen: "/images/item2.jpg"
+  }
+];
+---
+<BaseLayout title="CABEN — Acerca de Nosotros" description="Conoce la historia, misión, visión y valores de Servicios Marítimos René Armando Oyarce Cárcamo EIRL.">
+  <!-- HERO SECTION -->
+  <header class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <img
+        src="/images/background.jpg"
+        alt="Vista panorámica del mar en las Islas Guaitecas"
+        class="h-[500px] w-full object-cover brightness-[.45] contrast-110"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60"></div>
+    </div>
+
+    <section class="mx-auto max-w-6xl px-4 pt-28 pb-16">
+      <div class="text-center mb-8">
+        <h1 class="mb-6 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
+          Navegando el <span class="text-blue-300 animate-shine">Futuro</span> Marítimo
+        </h1>
+        <p class="text-xl md:text-2xl text-white/90 font-light max-w-4xl mx-auto">
+          Servicios Marítimos René Armando Oyarce Cárcamo EIRL
+        </p>
+      </div>
+      
+      <div class="glass-card p-8 max-w-5xl mx-auto">
+        <p class="text-lg md:text-xl text-white/95 leading-relaxed">
+          Somos una empresa especializada en transporte marítimo, comprometida con ofrecer <strong class="text-blue-300">soluciones eficientes y seguras</strong> en la Región de Los Lagos y la Región de Aysén. Nos destacamos por brindar servicios de transporte de personal y colaborar estrechamente con consultoras acuícolas que prestan servicios a las principales empresas salmoneras de la región.
+        </p>
+        <p class="text-lg text-white/90 leading-relaxed mt-4">
+          Nuestro equipo cuenta con una <strong class="text-blue-300">sólida experiencia en operaciones marítimas</strong>, garantizando altos estándares de calidad, puntualidad y seguridad en cada viaje. Nos enorgullece ser un aliado estratégico en el desarrollo de una de las industrias más importantes de Chile.
+        </p>
+      </div>
+    </section>
+  </header>
+
+  <!-- ESTADÍSTICAS -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Nuestra Trayectoria en Números</h2>
+      <p class="text-white/80 text-lg max-w-2xl mx-auto">
+        Cifras que reflejan nuestro compromiso y experiencia en el sector marítimo del sur de Chile.
+      </p>
+    </div>
+    
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {estadisticas.map((stat, index) => (
+        <article class="glass-card p-6 text-center group hover:scale-105 transition-transform duration-300">
+          <div class="text-4xl md:text-5xl font-bold text-blue-300 mb-2 group-hover:animate-pulse">
+            {stat.numero}
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-2">{stat.label}</h3>
+          <p class="text-white/70 text-sm">{stat.descripcion}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- MISIÓN Y VISIÓN MEJORADAS -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <!-- Misión -->
+      <article class="glass-card p-8 group hover:bg-blue-900/20 transition-all duration-300">
+        <div class="flex items-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mr-4">
+            <svg class="w-8 h-8 text-blue-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-white">Nuestra Misión</h2>
+        </div>
+        <p class="text-white/90 text-lg leading-relaxed">
+          Proveer servicios de transporte marítimo <strong class="text-blue-300">confiables, seguros y adaptados</strong> a las necesidades específicas de nuestros clientes, fomentando el desarrollo sostenible de las comunidades y sectores donde operamos.
+        </p>
+        <div class="mt-6 pt-6 border-t border-white/20">
+          <h4 class="font-semibold text-white mb-3">Comprometidos con:</h4>
+          <ul class="space-y-2 text-white/80">
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-300 rounded-full mr-3"></span>
+              Seguridad en todas las operaciones
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-300 rounded-full mr-3"></span>
+              Desarrollo sostenible del sector acuícola
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-blue-300 rounded-full mr-3"></span>
+              Conectividad entre comunidades marítimas
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Visión -->
+      <article class="glass-card p-8 group hover:bg-green-900/20 transition-all duration-300">
+        <div class="flex items-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mr-4">
+            <svg class="w-8 h-8 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-white">Nuestra Visión</h2>
+        </div>
+        <p class="text-white/90 text-lg leading-relaxed">
+          Ser reconocidos como el <strong class="text-green-300">principal socio estratégico</strong> en transporte marítimo en el sur de Chile, distinguidos por nuestra excelencia operativa y compromiso con el medio ambiente.
+        </p>
+        <div class="mt-6 pt-6 border-t border-white/20">
+          <h4 class="font-semibold text-white mb-3">Aspiramos a ser:</h4>
+          <ul class="space-y-2 text-white/80">
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-green-300 rounded-full mr-3"></span>
+              Líderes en innovación marítima
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-green-300 rounded-full mr-3"></span>
+              Referente en sostenibilidad ambiental
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-green-300 rounded-full mr-3"></span>
+              Primera opción para empresas acuícolas
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- VALORES MEJORADOS -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Nuestros Valores</h2>
+      <p class="text-white/80 text-lg max-w-3xl mx-auto">
+        Los principios que guían cada una de nuestras decisiones y acciones en el mar y en tierra.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {valores.map((valor, index) => (
+        <article class="glass-card p-6 text-center group hover:scale-105 transition-all duration-300">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:from-blue-400/30 group-hover:to-blue-500/30 transition-all duration-300">
+            <span class="text-4xl">{valor.icon}</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">{valor.titulo}</h3>
+          <p class="text-white/80 leading-relaxed">{valor.texto}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- LLAMADA A LA ACCIÓN -->
+  <section class="mx-auto max-w-6xl px-4 pb-24">
+    <div class="glass-card p-8 text-center">
+      <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">¿Listo para navegar con nosotros?</h3>
+      <p class="text-white/80 mb-8 max-w-2xl mx-auto text-lg">
+        Descubre cómo nuestros servicios marítimos pueden impulsar tu proyecto. Contacta con nuestro equipo de expertos.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/servicios" class="btn-primary text-lg px-8 py-4">
+          Ver Nuestros Servicios
+        </a>
+        <a href="/contacto" class="btn-secondary text-lg px-8 py-4">
+          Contactar Ahora
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
