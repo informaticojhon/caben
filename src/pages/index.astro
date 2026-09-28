@@ -83,22 +83,12 @@ const pasos = [
   },
 ];
 
-const testimonios = [
-  {
-    texto: "CABEN ha sido nuestro socio estratégico en transporte marítimo. Su profesionalismo y puntualidad son excepcionales.",
-    nombre: "María González",
-    cargo: "Gerente de Operaciones",
-    empresa: "AquaChile",
-    rating: 5
-  },
-  {
-    texto: "La calidad del servicio y la atención al detalle que ofrece el equipo de CABEN superó nuestras expectativas.",
-    nombre: "Carlos Mendoza",
-    cargo: "Coordinador Logístico",
-    empresa: "Salmones Austral",
-    rating: 5
-  }
-];
+// Solo testimonios reales y con autorización del cliente.
+// La sección se oculta automáticamente mientras esta lista esté vacía.
+// Ejemplo:
+// { texto: "...", nombre: "Nombre Apellido", cargo: "Cargo", empresa: "Empresa", rating: 5 },
+type Testimonio = { texto: string; nombre: string; cargo: string; empresa: string; rating: number };
+const testimonios: Testimonio[] = [];
 ---
 <BaseLayout title="CABEN — Servicios Marítimos" description="Transporte marítimo, subarriendo de embarcaciones y consultoría en el sur de Chile. Experiencia, seguridad y calidad.">
 
@@ -287,6 +277,7 @@ const testimonios = [
   </section>
 
   <!-- TESTIMONIOS -->
+  {testimonios.length > 0 && (
   <section class="mx-auto max-w-6xl px-4 py-16">
     <div class="text-center mb-12">
       <p class="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-2">TESTIMONIOS</p>
@@ -314,6 +305,7 @@ const testimonios = [
       ))}
     </div>
   </section>
+  )}
 
   <!-- CTA FINAL -->
   <section class="border-t border-white/10 bg-gradient-to-br from-blue-900/60 to-[#0b1e3a] py-24">
