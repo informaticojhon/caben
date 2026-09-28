@@ -4,11 +4,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 const servicios = [
   {
     key: "transporte",
-    img: "/images/servicio1.jpg",
+    img: "/images/servicio1.webp",
     titulo: "Transporte de pasajeros",
     desc: "Ofrecemos transporte seguro y eficiente en diferentes rutas marítimas.",
     detalle: {
-      hero: "/images/servicio1.jpg",
+      hero: "/images/servicio1.webp",
       intro:
         "Traslados confiables para personal y visitantes en rutas marítimas locales y regionales.",
       bullets: [
@@ -17,16 +17,16 @@ const servicios = [
         "Horarios flexibles y coordinación directa.",
       ],
       whatsapp:
-        "https://wa.me/56912345678?text=Hola%20CABEN,%20quisiera%20cotizar%20Transporte%20de%20Pasajeros",
+        "https://wa.me/56963204644?text=Hola%20CABEN,%20quisiera%20cotizar%20Transporte%20de%20Pasajeros",
     },
   },
   {
     key: "subarriendo",
-    img: "/images/servicio2.jpg",
+    img: "/images/servicio2.webp",
     titulo: "Subarriendo de embarcaciones",
     desc: "Disponemos de embarcaciones modernas y versátiles para arriendo.",
     detalle: {
-      hero: "/images/servicio2.jpg",
+      hero: "/images/servicio2.webp",
       intro:
         "Embarcaciones equipadas para faenas y logística costera, listas para operar.",
       bullets: [
@@ -35,16 +35,16 @@ const servicios = [
         "Mantención preventiva permanente.",
       ],
       whatsapp:
-        "https://wa.me/56912345678?text=Hola%20CABEN,%20quisiera%20cotizar%20Subarriendo%20de%20Embarcaciones",
+        "https://wa.me/56963204644?text=Hola%20CABEN,%20quisiera%20cotizar%20Subarriendo%20de%20Embarcaciones",
     },
   },
   {
     key: "consultoria",
-    img: "/images/servicio3.jpg",
+    img: "/images/servicio3.webp",
     titulo: "Consultoría",
     desc: "Asesoramiento técnico y estratégico para operaciones marítimas eficientes.",
     detalle: {
-      hero: "/images/servicio3.jpg",
+      hero: "/images/servicio3.webp",
       intro:
         "Acompañamiento experto para optimizar rutas, costos y cumplimiento normativo.",
       bullets: [
@@ -53,7 +53,7 @@ const servicios = [
         "Apoyo en tramitación y regulación marítima.",
       ],
       whatsapp:
-        "https://wa.me/56912345678?text=Hola%20CABEN,%20quisiera%20cotizar%20Consultor%C3%ADa%20Mar%C3%ADtima",
+        "https://wa.me/56963204644?text=Hola%20CABEN,%20quisiera%20cotizar%20Consultor%C3%ADa%20Mar%C3%ADtima",
     },
   },
 ];
@@ -63,7 +63,7 @@ const servicios = [
   <header class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10">
       <img
-        src="/images/background.jpg"
+        src="/images/background.webp"
         alt="Costa de Guaitecas"
         class="h-[500px] w-full object-cover"
         loading="eager"
@@ -114,7 +114,7 @@ const servicios = [
       {servicios.map((s, index) => (
         <article class="liquid-glass liquid-ripple group overflow-hidden hover:scale-105 transition-all duration-500 rounded-3xl floating-animation" style={`animation-delay: ${index * -1.5}s;`}>
           <div class="relative h-64 w-full overflow-hidden">
-            <img src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <img loading="lazy" decoding="async" src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
             <div class="absolute top-4 left-4">
               <span class="liquid-glass-blue px-4 py-2 rounded-full text-sm font-bold text-white">
@@ -165,13 +165,13 @@ const servicios = [
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <div class="liquid-glass-blue liquid-ripple p-8 rounded-2xl hover:scale-105 transition-all duration-500 floating-animation" style="animation-delay: -1s;">
-          <img src="/images/clientes/planctonandino.svg" alt="Plancton Andino" class="h-16 w-auto mx-auto mb-4 invert" />
+          <img loading="lazy" decoding="async" src="/images/clientes/planctonandino.svg" alt="Plancton Andino" class="h-16 w-auto mx-auto mb-4 invert" />
           <h3 class="text-lg font-semibold text-white mb-2">Plancton Andino</h3>
           <p class="text-white/70 text-sm">Servicios especializados en acuicultura</p>
         </div>
         
         <div class="liquid-glass-blue liquid-ripple p-8 rounded-2xl hover:scale-105 transition-all duration-500 floating-animation" style="animation-delay: -3s;">
-          <img src="/images/clientes/salmonesaustral.png" alt="Salmones Austral" class="h-16 w-auto mx-auto mb-4 invert" />
+          <img loading="lazy" decoding="async" src="/images/clientes/salmonesaustral.png" alt="Salmones Austral" class="h-16 w-auto mx-auto mb-4 invert" />
           <h3 class="text-lg font-semibold text-white mb-2">Salmones Austral</h3>
           <p class="text-white/70 text-sm">Transporte y logística marina</p>
         </div>
@@ -195,7 +195,7 @@ const servicios = [
   {servicios.map((s) => (
     <dialog id={`modal-${s.key}`} class="liquid-glass max-w-3xl w-full mx-4 rounded-3xl border border-white/30 text-white">
       <div class="relative overflow-hidden rounded-t-3xl">
-        <img src={s.detalle.hero} alt={s.titulo} class="h-64 w-full object-cover" />
+        <img loading="lazy" decoding="async" src={s.detalle.hero} alt={s.titulo} class="h-64 w-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         <button
           class="liquid-glass-blue absolute right-4 top-4 rounded-full backdrop-blur p-3 text-white hover:scale-110 transition-all duration-300 liquid-ripple"
@@ -241,14 +241,14 @@ const servicios = [
             Consultar por WhatsApp
           </a>
           <a
-            href={`/contacto?servicio=${s.key}`}
+            href={`mailto:contacto@caben.cl?subject=${encodeURIComponent(`Cotización: ${s.titulo}`)}`}
             class="liquid-glass liquid-ripple flex-1 inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/30 px-6 py-4 font-semibold text-white transition-all duration-300 hover:scale-105"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
               <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
             </svg>
-            Enviar Formulario
+            Cotizar por Correo
           </a>
         </div>
       </div>
@@ -281,86 +281,4 @@ const servicios = [
       });
     });
   </script>
-
-  <style>
-    /* Liquid Glass Effects */
-    .liquid-glass {
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.05)
-      );
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-
-    .liquid-glass-blue {
-      background: linear-gradient(135deg, 
-        rgba(59, 130, 246, 0.15),
-        rgba(37, 99, 235, 0.08),
-        rgba(147, 197, 253, 0.12)
-      );
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      box-shadow: 
-        0 12px 40px rgba(59, 130, 246, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 -1px 0 rgba(59, 130, 246, 0.2);
-    }
-
-    .liquid-glass-green {
-      background: linear-gradient(135deg, 
-        rgba(34, 197, 94, 0.12),
-        rgba(22, 163, 74, 0.06),
-        rgba(134, 239, 172, 0.1)
-      );
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(34, 197, 94, 0.25);
-      box-shadow: 
-        0 10px 35px rgba(34, 197, 94, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    }
-
-    .liquid-ripple {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .liquid-ripple::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.1), 
-        transparent
-      );
-      transition: left 0.8s ease;
-    }
-
-    .liquid-ripple:hover::before {
-      left: 100%;
-    }
-
-    .floating-animation {
-      animation: floating 6s ease-in-out infinite;
-    }
-
-    @keyframes floating {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      33% { transform: translateY(-10px) rotate(1deg); }
-      66% { transform: translateY(5px) rotate(-1deg); }
-    }
-
-    /* Modal backdrop liquid effect */
-    dialog::backdrop { 
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-    }
-  </style>
 </BaseLayout>

@@ -78,7 +78,7 @@ const { title = "CABEN", description = "Servicios profesionales" } = Astro.props
           <!-- Col 1: Marca + certificaciones -->
           <div>
             <div class="flex items-center gap-3 mb-4">
-              <img src="/images/logo.png" alt="CABEN" class="h-12 w-12 rounded-xl object-contain" />
+              <img loading="lazy" decoding="async" src="/images/logo.png" alt="CABEN" class="h-12 w-12 rounded-xl object-contain" />
               <div>
                 <p class="text-white font-bold text-lg leading-none">CABEN</p>
                 <p class="text-white/50 text-xs">Servicios Marítimos</p>
@@ -167,11 +167,6 @@ const { title = "CABEN", description = "Servicios profesionales" } = Astro.props
           <p class="text-white/40 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} CABEN — René Armando Oyarce Cárcamo EIRL. Todos los derechos reservados.
           </p>
-          <div class="flex items-center gap-4 text-xs text-white/40">
-            <a href="/acerca" class="hover:text-white/70 transition-colors">Política de Privacidad</a>
-            <span>·</span>
-            <a href="/contacto" class="hover:text-white/70 transition-colors">Términos de Uso</a>
-          </div>
         </div>
       </div>
     </footer>

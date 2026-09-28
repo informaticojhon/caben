@@ -3,14 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSlider from "../components/HeroSlider.astro";
 
 const heroImages = [
-  { src: "/images/ini2.jpg", caption: "Servicios Marítimos René Armando Oyarce Cárcamo EIRL" },
-  { src: "/images/ini3.jpg", caption: "Transporte de personal y operaciones acuícolas" },
-  { src: "/images/ini4.jpg", caption: "Experiencia local en el sur de Chile" },
+  { src: "/images/ini2.webp", caption: "Servicios Marítimos René Armando Oyarce Cárcamo EIRL" },
+  { src: "/images/ini3.webp", caption: "Transporte de personal y operaciones acuícolas" },
+  { src: "/images/background.webp", caption: "Experiencia local en el sur de Chile" },
 ];
 
 const servicios = [
   {
-    img: "/images/servicio1.jpg",
+    img: "/images/servicio1.webp",
     titulo: "Transporte de Pasajeros",
     desc: "Traslados seguros y puntuales en rutas marítimas locales y regionales del sur de Chile.",
     icon: "🚢",
@@ -18,7 +18,7 @@ const servicios = [
     href: "/servicios#transporte",
   },
   {
-    img: "/images/servicio2.jpg",
+    img: "/images/servicio2.webp",
     titulo: "Subarriendo de Embarcaciones",
     desc: "Embarcaciones equipadas y con mantención al día para faenas y logística costera.",
     icon: "⚓",
@@ -26,7 +26,7 @@ const servicios = [
     href: "/servicios#subarriendo",
   },
   {
-    img: "/images/servicio3.jpg",
+    img: "/images/servicio3.webp",
     titulo: "Consultoría Marítima",
     desc: "Optimización de operaciones, cumplimiento normativo y gestión de riesgos marítimos.",
     icon: "💼",
@@ -37,17 +37,17 @@ const servicios = [
 
 const destacados = [
   {
-    img: "/images/item1.jpg",
+    img: "/images/item1.webp",
     titulo: "Protagonistas del Mar",
     texto: "Impulsamos nuestra compañía mediante el desarrollo de competencias y habilidades de nuestro equipo marítimo."
   },
   {
-    img: "/images/item2.jpg",
+    img: "/images/item2.webp",
     titulo: "Calidad al Cliente",
     texto: "Buscamos satisfacer las necesidades de nuestros clientes con servicios innovadores y personalizados."
   },
   {
-    img: "/images/item3.jpg",
+    img: "/images/item3.webp",
     titulo: "Nuestro Entorno",
     texto: "Nuestra gente, el mar, lagos y ríos son parte de lo más importante para nosotros y nuestra operación."
   },
@@ -189,7 +189,7 @@ const testimonios = [
       {destacados.map((d) => (
         <article class="glass-card group overflow-hidden">
           <div class="relative h-56 w-full overflow-hidden">
-            <img src={d.img} alt={d.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <img loading="lazy" decoding="async" src={d.img} alt={d.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
           <div class="p-6">
@@ -214,7 +214,7 @@ const testimonios = [
       {servicios.map((s) => (
         <article class="glass-card group overflow-hidden flex flex-col">
           <div class="relative h-48 w-full overflow-hidden shrink-0">
-            <img src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <img loading="lazy" decoding="async" src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             <span class="absolute top-4 left-4 text-3xl">{s.icon}</span>
           </div>
