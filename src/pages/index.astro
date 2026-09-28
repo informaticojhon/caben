@@ -3,14 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSlider from "../components/HeroSlider.astro";
 
 const heroImages = [
-  { src: "/images/ini2.jpg", caption: "Servicios Marítimos René Armando Oyarce Cárcamo EIRL" },
-  { src: "/images/ini3.jpg", caption: "Transporte de personal y operaciones acuícolas" },
-  { src: "/images/ini4.jpg", caption: "Experiencia local en el sur de Chile" },
+  { src: "/images/ini2.webp", caption: "Servicios Marítimos René Armando Oyarce Cárcamo EIRL" },
+  { src: "/images/ini3.webp", caption: "Transporte de personal y operaciones acuícolas" },
+  { src: "/images/background.webp", caption: "Experiencia local en el sur de Chile" },
 ];
 
 const servicios = [
   {
-    img: "/images/servicio1.jpg",
+    img: "/images/servicio1.webp",
     titulo: "Transporte de Pasajeros",
     desc: "Traslados seguros y puntuales en rutas marítimas locales y regionales del sur de Chile.",
     icon: "🚢",
@@ -18,7 +18,7 @@ const servicios = [
     href: "/servicios#transporte",
   },
   {
-    img: "/images/servicio2.jpg",
+    img: "/images/servicio2.webp",
     titulo: "Subarriendo de Embarcaciones",
     desc: "Embarcaciones equipadas y con mantención al día para faenas y logística costera.",
     icon: "⚓",
@@ -26,7 +26,7 @@ const servicios = [
     href: "/servicios#subarriendo",
   },
   {
-    img: "/images/servicio3.jpg",
+    img: "/images/servicio3.webp",
     titulo: "Consultoría Marítima",
     desc: "Optimización de operaciones, cumplimiento normativo y gestión de riesgos marítimos.",
     icon: "💼",
@@ -37,27 +37,27 @@ const servicios = [
 
 const destacados = [
   {
-    img: "/images/item1.jpg",
+    img: "/images/item1.webp",
     titulo: "Protagonistas del Mar",
     texto: "Impulsamos nuestra compañía mediante el desarrollo de competencias y habilidades de nuestro equipo marítimo."
   },
   {
-    img: "/images/item2.jpg",
+    img: "/images/item2.webp",
     titulo: "Calidad al Cliente",
     texto: "Buscamos satisfacer las necesidades de nuestros clientes con servicios innovadores y personalizados."
   },
   {
-    img: "/images/item3.jpg",
+    img: "/images/item3.webp",
     titulo: "Nuestro Entorno",
     texto: "Nuestra gente, el mar, lagos y ríos son parte de lo más importante para nosotros y nuestra operación."
   },
 ];
 
 const estadisticas = [
-  { numero: "15+", label: "Años de Experiencia", descripcion: "En operaciones marítimas" },
-  { numero: "500+", label: "Clientes Atendidos", descripcion: "Empresas y particulares" },
   { numero: "24/7", label: "Disponibilidad", descripcion: "Atención continua" },
-  { numero: "100%", label: "Seguridad", descripcion: "Compromiso total" },
+  { numero: "24h", label: "Tiempo de Respuesta", descripcion: "Cotizaciones en horario hábil" },
+  { numero: "2", label: "Regiones", descripcion: "Los Lagos y Aysén" },
+  { numero: "3", label: "Servicios", descripcion: "Transporte, subarriendo y consultoría" },
 ];
 
 const pasos = [
@@ -83,22 +83,12 @@ const pasos = [
   },
 ];
 
-const testimonios = [
-  {
-    texto: "CABEN ha sido nuestro socio estratégico en transporte marítimo. Su profesionalismo y puntualidad son excepcionales.",
-    nombre: "María González",
-    cargo: "Gerente de Operaciones",
-    empresa: "AquaChile",
-    rating: 5
-  },
-  {
-    texto: "La calidad del servicio y la atención al detalle que ofrece el equipo de CABEN superó nuestras expectativas.",
-    nombre: "Carlos Mendoza",
-    cargo: "Coordinador Logístico",
-    empresa: "Salmones Austral",
-    rating: 5
-  }
-];
+// Solo testimonios reales y con autorización del cliente.
+// La sección se oculta automáticamente mientras esta lista esté vacía.
+// Ejemplo:
+// { texto: "...", nombre: "Nombre Apellido", cargo: "Cargo", empresa: "Empresa", rating: 5 },
+type Testimonio = { texto: string; nombre: string; cargo: string; empresa: string; rating: number };
+const testimonios: Testimonio[] = [];
 ---
 <BaseLayout title="CABEN — Servicios Marítimos" description="Transporte marítimo, subarriendo de embarcaciones y consultoría en el sur de Chile. Experiencia, seguridad y calidad.">
 
@@ -113,7 +103,7 @@ const testimonios = [
           Transporte Marítimo<br/><span class="text-blue-300">Profesional</span>
         </h1>
         <p class="text-white/75 text-lg mb-8 max-w-xl mx-auto">
-          15 años navegando con seguridad y confianza en las aguas del sur de Chile
+          Navegando con seguridad y confianza las aguas del sur de Chile
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href="/contacto" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 shadow-2xl text-base">
@@ -128,41 +118,13 @@ const testimonios = [
     </div>
   </section>
 
-  <!-- TRUST BAR -->
-  <section class="border-y border-white/10 bg-black/30 backdrop-blur py-4">
-    <div class="mx-auto max-w-6xl px-4">
-      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-        <span class="text-white/35 text-xs font-semibold uppercase tracking-widest">Avalados por</span>
-        <div class="flex items-center gap-2 text-white/55 text-sm font-medium">
-          <svg class="w-4 h-4 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944l2.387 4.836 5.338.776-3.862 3.764.912 5.315L10 13.944l-4.775 2.691.912-5.315L2.275 7.556l5.338-.776L10 1.944z" clip-rule="evenodd"/></svg>
-          DIRECTEMAR
-        </div>
-        <span class="hidden sm:block text-white/15">|</span>
-        <div class="flex items-center gap-2 text-white/55 text-sm font-medium">
-          <svg class="w-4 h-4 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944l2.387 4.836 5.338.776-3.862 3.764.912 5.315L10 13.944l-4.775 2.691.912-5.315L2.275 7.556l5.338-.776L10 1.944z" clip-rule="evenodd"/></svg>
-          Armada de Chile
-        </div>
-        <span class="hidden sm:block text-white/15">|</span>
-        <div class="flex items-center gap-2 text-white/55 text-sm font-medium">
-          <svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          Registro SII
-        </div>
-        <span class="hidden sm:block text-white/15">|</span>
-        <div class="flex items-center gap-2 text-white/55 text-sm font-medium">
-          <svg class="w-4 h-4 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          Operaciones STCW
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ESTADÍSTICAS -->
   <section class="mx-auto max-w-6xl px-4 py-16">
     <div class="text-center mb-12">
-      <p class="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-2">TRAYECTORIA</p>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Líderes en Servicios Marítimos</h2>
+      <p class="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-2">COBERTURA</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Servicio Marítimo en el Sur de Chile</h2>
       <p class="text-white/60 text-lg max-w-2xl mx-auto">
-        Números que reflejan nuestro compromiso con la excelencia y la confianza de nuestros clientes.
+        Disponibilidad, respuesta y cobertura pensadas para las operaciones acuícolas de la zona.
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -189,7 +151,7 @@ const testimonios = [
       {destacados.map((d) => (
         <article class="glass-card group overflow-hidden">
           <div class="relative h-56 w-full overflow-hidden">
-            <img src={d.img} alt={d.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <img loading="lazy" decoding="async" src={d.img} alt={d.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
           <div class="p-6">
@@ -214,7 +176,7 @@ const testimonios = [
       {servicios.map((s) => (
         <article class="glass-card group overflow-hidden flex flex-col">
           <div class="relative h-48 w-full overflow-hidden shrink-0">
-            <img src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <img loading="lazy" decoding="async" src={s.img} alt={s.titulo} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             <span class="absolute top-4 left-4 text-3xl">{s.icon}</span>
           </div>
@@ -287,6 +249,7 @@ const testimonios = [
   </section>
 
   <!-- TESTIMONIOS -->
+  {testimonios.length > 0 && (
   <section class="mx-auto max-w-6xl px-4 py-16">
     <div class="text-center mb-12">
       <p class="text-blue-400 text-xs font-semibold uppercase tracking-widest mb-2">TESTIMONIOS</p>
@@ -314,6 +277,7 @@ const testimonios = [
       ))}
     </div>
   </section>
+  )}
 
   <!-- CTA FINAL -->
   <section class="border-t border-white/10 bg-gradient-to-br from-blue-900/60 to-[#0b1e3a] py-24">
@@ -323,7 +287,7 @@ const testimonios = [
         Cotización gratuita<br/>sin compromiso
       </h2>
       <p class="text-white/60 text-lg mb-3 max-w-xl mx-auto">
-        Únete a cientos de empresas que confían en nuestros servicios marítimos profesionales.
+        Cuéntanos qué necesitas y te enviamos una propuesta a la medida de tu operación.
       </p>
       <div class="flex flex-wrap justify-center gap-5 text-sm text-white/50 mb-10">
         <span class="flex items-center gap-1.5">
