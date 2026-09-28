@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+# archivos generados por Astro
+.astro/
+
 
 # local env files
 .env.local
