@@ -21,7 +21,7 @@ const {
 
 const slidesData: Slide[] = (images ?? []) as Slide[];
 ---
-<section class="relative isolate">
+<section class="relative">
   <!-- Carrusel -->
   <div
     class={`relative ${height} overflow-hidden rounded-none`}
@@ -47,19 +47,19 @@ const slidesData: Slide[] = (images ?? []) as Slide[];
     </div>
 
     <!-- Controles con efectos liquid glass -->
-    <button class="nav prev absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl border border-white/30 text-white hover:from-white/30 hover:to-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20 flex items-center justify-center group ripple-effect" aria-label="Anterior">
-      <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button class="nav prev absolute z-10 left-4 bottom-8 w-10 h-10 rounded-xl lg:left-6 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:w-14 lg:h-14 lg:rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl border border-white/30 text-white hover:from-white/30 hover:to-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20 flex items-center justify-center group ripple-effect" aria-label="Anterior">
+      <svg class="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
       </svg>
     </button>
-    <button class="nav next absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl border border-white/30 text-white hover:from-white/30 hover:to-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20 flex items-center justify-center group ripple-effect" aria-label="Siguiente">
-      <svg class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <button class="nav next absolute z-10 right-4 bottom-8 w-10 h-10 rounded-xl lg:right-6 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:w-14 lg:h-14 lg:rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl border border-white/30 text-white hover:from-white/30 hover:to-white/20 hover:scale-110 transition-all duration-300 shadow-2xl hover:shadow-white/20 flex items-center justify-center group ripple-effect" aria-label="Siguiente">
+      <svg class="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
       </svg>
     </button>
 
     <!-- Dots con efectos liquid glass -->
-    <div class="dots absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 p-3 rounded-2xl bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
+    <div class="dots absolute z-10 bottom-8 left-1/2 -translate-x-1/2 flex gap-4 p-3 rounded-2xl bg-gradient-to-r from-white/15 to-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
       {slidesData.map((_, i: number) => (
         <button
           class={`dot w-4 h-4 rounded-full transition-all duration-300 hover:scale-125 ${i === 0 ? "bg-white shadow-lg shadow-white/50 scale-125" : "bg-white/50 hover:bg-white/80"}`}
